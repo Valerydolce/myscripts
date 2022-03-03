@@ -1,4 +1,4 @@
-i#!/bin/bash
+#!/bin/bash
 
 #Author : Paul Valery Simo
 #Date : 3 Mars 2022
@@ -20,7 +20,8 @@ if [[ -z ${DESC} ]]
  echo "The description cannot be empty, please enter a description"
  exit 3
 fi
-											echo " What is the shell for this user? "
+
+echo " What is the shell for this user? "
 read SHELL
 
-											useradd $USERNAME -s $SHELL -c "${DESC}"
+useradd $USERNAME -s $SHELL -c "${DESC}"
