@@ -8,7 +8,7 @@
 
 echo -e "\nWe're about to install Java, a prerequisite for Jenkins...\n"
 sleep 3
-sudo sudo yum install java-1.8.0-openjdk-devel -y
+sudo yum install java-1.8.0-openjdk-devel -y
 if [ $? -ne 0 ]
  then 
  echo -e "\nJava Installation has failed, please troubleshoot...\n"
@@ -19,7 +19,7 @@ fi
 
 # Step 2 - Enable Jenkins Repository.
 PACKAGE=wget
-rpm -F $PACKAGE > /dev/null 2>&1 # /dev/null 2>&1 will prevent the command to print on output
+rpm -F $PACKAGE > /dev/null 2>&1 ## /dev/null 2>&1 will prevent the command to print on output
 if [ "$?" = "1" ]
  then
  yum install wget -y
@@ -50,15 +50,15 @@ echo -e "\nJenkins has been enabled...\n"
 sleep 3
 
 # Step 5 - Adjust Firewall - Open port 8080
-echo -e "\nOpening Port 8080...\n"
+echo -e "\nOpening Port 8080\n"
 systemctl start firewalld
 systemctl enable firewalld
 sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp 
 sudo firewall-cmd --reload
-echo -e "\nPort 8080 has been opened!\n"
-sleep 5
+sleep 3
 
 # Step 5 - Generating URL for end user
 echo -e "Please use the link below to connect to Jenkins' landing page...."
-echo -e echo -e "\n http://`hostname -I`:8080\n"
+echo -e "\n http://`hostname -I`:8080\n"
+
 
